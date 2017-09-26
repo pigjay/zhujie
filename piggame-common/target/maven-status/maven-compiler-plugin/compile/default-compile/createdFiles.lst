@@ -1,0 +1,4 @@
+com\piggame\base\service\BaseServiceImpl.class
+com\piggame\base\service\BaseService.class
+com\piggame\Application.class
+com\piggame\base\BaseEntity.class
