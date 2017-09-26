@@ -1,0 +1,10 @@
+com\piggame\service\SysRoleService.class
+com\piggame\dao\system\SysRoleSqlProvider.class
+com\piggame\dao\system\SysRoleMapper.class
+com\piggame\dao\system\SysPermissionMapper.class
+com\piggame\redis\RedisService.class
+com\piggame\dao\system\SysUserMapper.class
+com\piggame\service\SysUserService.class
+com\piggame\dao\system\SysPermissionSqlProvider.class
+com\piggame\service\SysPermissionService.class
+com\piggame\dao\system\SysUserSqlProvider.class
