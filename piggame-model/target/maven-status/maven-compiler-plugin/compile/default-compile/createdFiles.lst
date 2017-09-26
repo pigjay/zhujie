@@ -1,0 +1,16 @@
+com\piggame\model\system\SysRoleExample$Criterion.class
+com\piggame\model\system\SysPermission.class
+com\piggame\model\base\BaseEntity.class
+com\piggame\model\system\SysUserExample.class
+com\piggame\model\system\SysPermissionExample.class
+com\piggame\model\system\SysUserExample$Criterion.class
+com\piggame\model\system\SysPermissionExample$Criteria.class
+com\piggame\model\system\SysUser.class
+com\piggame\model\system\SysPermissionExample$Criterion.class
+com\piggame\model\system\SysRoleExample$GeneratedCriteria.class
+com\piggame\model\system\SysUserExample$GeneratedCriteria.class
+com\piggame\model\system\SysRoleExample.class
+com\piggame\model\system\SysRoleExample$Criteria.class
+com\piggame\model\system\SysPermissionExample$GeneratedCriteria.class
+com\piggame\model\system\SysRole.class
+com\piggame\model\system\SysUserExample$Criteria.class

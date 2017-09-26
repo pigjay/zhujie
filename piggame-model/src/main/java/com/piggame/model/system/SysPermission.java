@@ -1,88 +1,85 @@
 package com.piggame.model.system;
 
-import com.piggame.base.BaseEntity;
+import com.piggame.model.base.BaseEntity;
 
-public class SysPermission extends BaseEntity<SysPermission>{
+public class SysPermission extends BaseEntity {
+    private Long id;
 
-	private Long id;
-	
-	private String name;
-	
-	private String resourceType;
-	
-	private String url;
-	
-	private String permission;
-	
-	private Long parentId;
-	
-	private String parentIds;
-	
-	private Boolean available;
+    private String name;
 
-	public Long getId() {
-		return id;
-	}
+    private String resourceType;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String url;
 
-	public String getName() {
-		return name;
-	}
+    private String permission;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private Long parentId;
 
-	public String getResourceType() {
-		return resourceType;
-	}
+    private String parentIds;
 
-	public void setResourceType(String resourceType) {
-		this.resourceType = resourceType;
-	}
+    private Byte available;
 
-	public String getUrl() {
-		return url;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getPermission() {
-		return permission;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPermission(String permission) {
-		this.permission = permission;
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public Long getParentId() {
-		return parentId;
-	}
+    public String getResourceType() {
+        return resourceType;
+    }
 
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
+    public void setResourceType(String resourceType) {
+        this.resourceType = resourceType == null ? null : resourceType.trim();
+    }
 
-	public String getParentIds() {
-		return parentIds;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public void setParentIds(String parentIds) {
-		this.parentIds = parentIds;
-	}
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
+    }
 
-	public Boolean getAvailable() {
-		return available;
-	}
+    public String getPermission() {
+        return permission;
+    }
 
-	public void setAvailable(Boolean available) {
-		this.available = available;
-	}
-	
-	
+    public void setPermission(String permission) {
+        this.permission = permission == null ? null : permission.trim();
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getParentIds() {
+        return parentIds;
+    }
+
+    public void setParentIds(String parentIds) {
+        this.parentIds = parentIds == null ? null : parentIds.trim();
+    }
+
+    public Byte getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Byte available) {
+        this.available = available;
+    }
 }
