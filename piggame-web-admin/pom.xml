@@ -11,6 +11,29 @@
   <artifactId>piggame-web-admin</artifactId>
   <packaging>jar</packaging>
 
+   <dependencies>
+      <dependency>
+         <groupId>zj.cn</groupId>
+         <artifactId>piggame-common</artifactId>
+         <version>1.0</version>
+      </dependency>
+      <dependency>
+         <groupId>zj.cn</groupId>
+         <artifactId>piggame-framework</artifactId>
+         <version>1.0</version>
+      </dependency>
+      <dependency>
+         <groupId>zj.cn</groupId>
+         <artifactId>piggame-model</artifactId>
+         <version>1.0</version>
+      </dependency>
+      <dependency>
+         <groupId>zj.cn</groupId>
+         <artifactId>piggame-service</artifactId>
+         <version>1.0</version>
+      </dependency>
+   </dependencies>
+
 	<build>
 		<plugins>
 			<plugin>

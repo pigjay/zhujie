@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +14,8 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-
+import org.springframework.stereotype.Repository;
+@Mapper
 public interface SysUserMapper {
     @Delete({
         "delete from sys_user",
@@ -74,4 +76,10 @@ public interface SysUserMapper {
         "where id = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(SysUser record);
+    
+    @Select({
+    	"select * from sys_user"
+    })
+    List<SysUser> findAll();
+    
 }

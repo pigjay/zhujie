@@ -1,3 +1,4 @@
+com\piggame\base\entity\BaseEntity.class
+com\piggame\base\dao\BaseDao.class
 com\piggame\base\service\BaseService.class
-com\piggame\base\BaseEntity.class
 com\piggame\base\service\BaseServiceImpl.class

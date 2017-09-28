@@ -1,8 +1,6 @@
 package com.piggame.model.system;
 
-import com.piggame.model.base.BaseEntity;
-
-public class SysUser extends BaseEntity {
+public class SysUser {
     private Long id;
 
     private String username;
@@ -61,5 +59,9 @@ public class SysUser extends BaseEntity {
 
     public void setState(Byte state) {
         this.state = state;
+    }
+    
+    public String getCredentialsSalt() {
+    	return this.username+this.salt;
     }
 }

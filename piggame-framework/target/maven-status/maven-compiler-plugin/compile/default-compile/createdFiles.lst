@@ -1,7 +1,6 @@
 com\pigganme\framework\config\redis\RedisConfig$1.class
-com\pigganme\framework\config\shiro\ShiroConfig.class
+com\pigganme\framework\config\data\DruidConfig.class
 com\pigganme\framework\config\redis\RedisConfig.class
-com\pigganme\framework\config\data\DataSourceConfig.class
-com\pigganme\framework\config\shiro\MyShiroRealm.class
 com\pigganme\framework\config\session\SessionConfig.class
+com\pigganme\framework\config\data\DataSourceConfig.class
 com\pigganme\framework\config\session\Initializer.class

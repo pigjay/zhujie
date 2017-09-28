@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.piggame.dao.system.SysPermissionMapper;
 import com.piggame.dao.system.SysRoleMapper;
 import com.piggame.dao.system.SysUserMapper;
+import com.piggame.dao.system.SysUserMapperCustom;
 import com.piggame.model.system.SysUser;
 import com.piggame.model.system.SysUserExample;
 import com.piggame.service.system.SysUserService;
+import com.piggame.vo.system.SysUserVo;
 
 @Service
 @Transactional
@@ -26,10 +28,12 @@ public class SysUserServiceImpl implements SysUserService{
 	@Autowired
 	private SysPermissionMapper sysPermissionMapper;
 	
+	@Autowired
+	private SysUserMapperCustom  sysUserMapperCustom;
+	
 	@Override
 	public List<SysUser> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return sysUserMapper.findAll();
 	}
 
 	@Override
@@ -52,12 +56,8 @@ public class SysUserServiceImpl implements SysUserService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public SysUser findByUsername(String userName) {
-		SysUserExample example =new SysUserExample();
-		example.createCriteria().andUsernameEqualTo(userName);
-		SysUser sysUser =sysUserMapper.selectByExample(example).get(0);
-		
-		return null;
+	public SysUserVo findByUsername(String userName) {
+		return sysUserMapperCustom.findByUsername(userName);
 	}
 
 }

@@ -21,7 +21,6 @@
         <javaModelGenerator targetPackage="com.piggame.model.system" targetProject="C:\Users\cjh-pc\Documents\workspace-sts-3.9.0.RELEASE\piggame\piggame-model\src\main\java">  
             <property name="enableSubPackages" value="true"/>  
             <property name="trimStrings" value="true"/> 
-            <property name="rootClass" value="com.piggame.model.base.BaseEntity"/> 
         </javaModelGenerator>  
         <!--生成映射文件存放位置-->  
         <sqlMapGenerator targetPackage="com.piggame.dao.system" targetProject="C:\Users\cjh-pc\Documents\workspace-sts-3.9.0.RELEASE\piggame\piggame-service\src\main\java">  

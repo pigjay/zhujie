@@ -3,6 +3,7 @@ package com.piggame.service.system;
 import java.util.List;
 
 import com.piggame.model.system.SysUser;
+import com.piggame.vo.system.SysUserVo;
 
 public interface SysUserService{
   
@@ -38,6 +39,6 @@ public interface SysUserService{
 	 * @param userName
 	 * @return
 	 */
-	SysUser findByUsername(String userName);
+	SysUserVo findByUsername(String userName);
 	
 }
