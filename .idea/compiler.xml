@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="piggame-common" />
+        <module name="piggame-framework" />
+        <module name="piggame-model" />
+        <module name="piggame-service" />
+        <module name="piggame-web-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="piggame" target="1.7" />
+      <module name="piggame-common" target="1.7" />
+      <module name="piggame-framework" target="1.7" />
+      <module name="piggame-model" target="1.7" />
+      <module name="piggame-service" target="1.7" />
+      <module name="piggame-web-admin" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

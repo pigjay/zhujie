@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 
@@ -180,5 +181,10 @@ public class RedisService {
 	public Set<Object> rangeByscore(String key,double scoure,double scoure1){
 		ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
 		return zset.rangeByScore(key, scoure, scoure1);
+	}
+	
+	public Set<TypedTuple<Object>> rangeByIndex(String key,Long first,Long last){
+		ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
+		return zset.rangeWithScores(key, first, last);
 	}
 }

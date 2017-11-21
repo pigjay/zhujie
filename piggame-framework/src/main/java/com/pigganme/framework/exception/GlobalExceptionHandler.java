@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = Exception.class)
     public Result defaultErrorHandler(HttpServletRequest request,Exception e)throws Exception{
     	Result result =new Result();
+    	e.printStackTrace();
     	result.setMessage(e.getMessage());
     	return result;
     }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/piggame.iml" filepath="$PROJECT_DIR$/piggame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-common/piggame-common.iml" filepath="$PROJECT_DIR$/piggame-common/piggame-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-framework/piggame-framework.iml" filepath="$PROJECT_DIR$/piggame-framework/piggame-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-model/piggame-model.iml" filepath="$PROJECT_DIR$/piggame-model/piggame-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-service/piggame-service.iml" filepath="$PROJECT_DIR$/piggame-service/piggame-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-web-admin/piggame-web-admin.iml" filepath="$PROJECT_DIR$/piggame-web-admin/piggame-web-admin.iml" />
+    </modules>
+  </component>
+</project>

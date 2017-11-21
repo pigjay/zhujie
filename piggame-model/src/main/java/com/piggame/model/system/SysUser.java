@@ -1,6 +1,8 @@
 package com.piggame.model.system;
 
-public class SysUser {
+import com.piggame.base.entity.BaseEntity;
+
+public class SysUser extends BaseEntity<SysUser>{
     private Long id;
 
     private String username;
