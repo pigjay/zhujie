@@ -12,8 +12,6 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.piggame.model.system.SysPermission;
-import com.piggame.model.system.SysRole;
-import com.piggame.model.system.SysUser;
 import com.piggame.service.system.SysUserService;
 import com.piggame.vo.system.SysRoleVo;
 import com.piggame.vo.system.SysUserVo;
