@@ -17,11 +17,6 @@
        <artifactId>piggame-common</artifactId>
        <version>1.0</version>
     </dependency>
-    <dependency>
-      <groupId>zj.cn</groupId>
-      <artifactId>piggame-framework</artifactId>
-      <version>1.0</version>
-    </dependency>
   </dependencies>
   
 </project>

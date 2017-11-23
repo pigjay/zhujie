@@ -2,14 +2,11 @@ package com.piggame.dao.system;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import com.piggame.vo.system.SysUserVo;
 
-
+@Mapper
 public interface SysUserMapperCustom {
 	@Select("SELECT * FROM sys_user WHERE username = #{username}")
     @Results({

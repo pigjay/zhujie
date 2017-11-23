@@ -31,6 +31,18 @@ public class Result {
 	public void setDatas(Object datas) {
 		this.datas = datas;
 	}
-	
-	
+
+	public Result(int code, String message) {
+		this.code = code;
+		this.message = message;
+	}
+
+	public Result(int code, String message, Object datas) {
+		this.code = code;
+		this.message = message;
+		this.datas = datas;
+	}
+
+	public Result() {
+	}
 }

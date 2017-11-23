@@ -57,7 +57,7 @@ public class SysUserController {
 		}
 		map.put("msg", msg);
 		// 此方法不处理登录成功,由shiro进行处理
-		return "/index.html";
+		return "/view/index.html";
 	}
 	
 	@RequestMapping("/user/info")

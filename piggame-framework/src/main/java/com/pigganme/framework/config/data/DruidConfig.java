@@ -16,8 +16,10 @@ import org.springframework.context.annotation.Primary;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class DruidConfig {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -68,8 +70,7 @@ public class DruidConfig {
 
 	@Value("${spring.datasource.filters}")
 	private String filters;
-	
-	
+
 	@Bean
 	public ServletRegistrationBean druidServlet() {
 	ServletRegistrationBean reg = new ServletRegistrationBean();
