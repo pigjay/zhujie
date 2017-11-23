@@ -1,5 +1,6 @@
 package com.pigganme.framework.config.shiro;
 
+import com.pigganme.framework.filter.ShiroLoginFilter;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
+import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -26,6 +28,8 @@ public class ShiroConfig {
         factoryBean.setSecurityManager(securityManager);
         //拦截器
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
+        Map<String,Filter> filters = new LinkedHashMap<String, Filter>();
+        filters.put("authc",new ShiroLoginFilter());
         //配置不会被拦截的链接 顺序判断
         //配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/view/**", "anon");
@@ -42,6 +46,7 @@ public class ShiroConfig {
         //未授权界面;
         factoryBean.setUnauthorizedUrl("/403");
         factoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        factoryBean.setFilters(filters);
         return factoryBean;
     }
 
