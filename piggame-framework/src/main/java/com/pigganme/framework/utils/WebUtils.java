@@ -40,11 +40,4 @@ public class WebUtils {
         out.close();
     }
 
-    public static void issueRedirect(ServletRequest request, ServletResponse response, String unauthorizedUrl) {
-        //TODO
-    }
-
-    public static HttpServletResponse toHttp(ServletResponse response) {
-        //TODO
-    }
 }
