@@ -23,34 +23,6 @@ import java.io.IOException;
  **/
 public class ShiroLoginFilter extends FormAuthenticationFilter{
 
-    private  static  final Logger  log = LoggerFactory.getLogger(ShiroLoginFilter.class);
-
-    @Override
-    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        if (isLoginRequest(request, response)) {
-            if (isLoginSubmission(request, response)) {
-                if (log.isTraceEnabled()) {
-                    log.trace("Login submission detected.  Attempting to execute login.");
-                }
-                return executeLogin(request, response);
-            } else {
-                if (log.isTraceEnabled()) {
-                    log.trace("Login page view.");
-                }
-                //allow them to see the login page ;)
-                return true;
-            }
-        } else {
-            if (log.isTraceEnabled()) {
-                log.trace("Attempting to access a path which requires authentication.  Forwarding to the " +
-                        "Authentication url [" + getLoginUrl() + "]");
-            }
-
-            saveRequestAndRedirectToLogin(request, response);
-            return false;
-        }
-    }
-
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
@@ -69,8 +41,7 @@ public class ShiroLoginFilter extends FormAuthenticationFilter{
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest
-                .getHeader("X-Requested-With"))) {// 不是ajax请求
+        if (!WebUtils.isAjax(httpServletRequest)) {// 不是ajax请求
             setFailureAttribute(request, e);
             return true;
         }

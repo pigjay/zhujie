@@ -10,7 +10,13 @@ app.controller('LoadingController',function($scope,$resource,$state,$localStorag
 });
 app.controller('LoginController',function($scope,$state,$http,$resource,Base64,$localStorage){
     $scope.login = function(){
-        $scope.authError = ""
+        var user  = $scope.user;
+        $http.post("/login",user).then(function (data) {
+            $state.go('app.dashboard');
+        },function () {
+            $scope.authError = "服务器登录错误";
+        })
+/*        $scope.authError = ""
         var authdata = Base64.encode($scope.user.username + ':' + $scope.user.password);
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
         var $com = $resource($scope.app.host + "/login");
@@ -20,7 +26,7 @@ app.controller('LoginController',function($scope,$state,$http,$resource,Base64,$
             $state.go('app.dashboard');
         },function(){
             $scope.authError = "服务器登录错误"
-        })
+        })*/
     }
 });
 app.factory('Base64',function(){
