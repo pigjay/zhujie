@@ -7,6 +7,11 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.crazycake.shiro.RedisCacheManager;
+import org.crazycake.shiro.RedisManager;
+import org.crazycake.shiro.RedisSessionDAO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
@@ -22,6 +27,12 @@ import java.util.Properties;
  **/
 @Configuration
 public class ShiroConfig {
+
+    @Value("${spring.redis.host}")
+    private  String host;
+
+    @Value("${spring.redis.port}")
+    private  int port;
 
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
@@ -76,7 +87,12 @@ public class ShiroConfig {
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        //设置realm
         securityManager.setRealm(myShiroRealm());
+        //自定义缓存实现 使用redis
+        securityManager.setCacheManager(redisCacheManager());
+        //自定义session管理 使用redis
+        securityManager.setSessionManager(sessionManager());
         return securityManager;
     }
 
@@ -107,6 +123,47 @@ public class ShiroConfig {
         r.setExceptionAttribute("ex");     // Default is "exception"
         //r.setWarnLogCategory("example.MvcLogger");     // No default
         return r;
+    }
+
+    /**
+     * 配置shiro redisManager
+     * @return
+     */
+    public RedisManager redisManager(){
+        RedisManager redisManager = new RedisManager();
+        redisManager.setHost(host);
+        redisManager.setPort(port);
+        redisManager.setExpire(1800);//配置过期时间
+        //redisManager.setTimeout(timeout);
+        //redisManager.setPassword(password);
+        return redisManager;
+
+    }
+
+    /**
+     * cacheManager 缓存 redis实现
+     * @return
+     */
+    public RedisCacheManager redisCacheManager(){
+        RedisCacheManager redisCacheManager = new RedisCacheManager();
+        redisCacheManager.setRedisManager(redisManager());
+        return redisCacheManager;
+    }
+
+    /**
+     * RedisSessionDAO shiro sessionDao层的实现 通过redis
+     * @return
+     */
+    public RedisSessionDAO redisSessionDAO(){
+        RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
+        redisSessionDAO.setRedisManager(redisManager());
+        return redisSessionDAO;
+    }
+
+    public DefaultWebSessionManager sessionManager(){
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        sessionManager.setSessionDAO(redisSessionDAO());
+        return sessionManager;
     }
 
     public  ShiroLoginFilter shiroLoginFilter(){
