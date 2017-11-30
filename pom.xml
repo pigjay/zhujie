@@ -20,16 +20,17 @@
         <module>piggame-framework</module>
         <module>piggame-model</module>
         <module>piggame-service</module>
+		<module>piggame-websocket</module>
         <module>piggame-web-admin</module>
     </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.7</java.version>
-<!-- 		<maven.compiler.source>1.7</maven.compiler.source>    
-        <maven.compiler.target>1.7</maven.compiler.target>    
-        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>    -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+<!-- <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>    -->
 	</properties>
 
 	<dependencies>

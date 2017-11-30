@@ -1,6 +1,8 @@
 package com.piggame.model.system;
 
-public class SysRole {
+import com.piggame.base.entity.BaseEntity;
+
+public class SysRole extends BaseEntity<SysRole>{
     private Long id;
 
     private String role;

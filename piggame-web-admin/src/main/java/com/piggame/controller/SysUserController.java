@@ -12,6 +12,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,10 +32,12 @@ public class SysUserController {
 	}
 	
 	@RequestMapping(value="/login")
-	public void login(HttpServletRequest request,HttpServletResponse response,Map<String, Object> map) throws IOException {
+	public void login(HttpServletRequest request, HttpServletResponse response,String username,String password, Map<String, Object> map) throws IOException {
 		System.out.println("HomeController.login()");
         // 登录失败从request中获取shiro处理的异常信息。
         // shiroLoginFailure:就是shiro异常类的全类名.
+		String username1 = request.getParameter("username");
+		String password1 = request.getParameter("password");
 		String exception = (String) request.getAttribute("shiroLoginFailure");
 		System.out.println("exception = "+exception);
 		String msg = "";

@@ -1,33 +1,47 @@
 // admin/auth/ctrl.js
 app.controller('LoadingController',function($scope,$resource,$state,$localStorage){
-    var $com = $resource($scope.app.host + "/login/");
-    $com.get(function(data){//引入data
+    var $com = $resource($scope.app.host + "/user/list");
+    $state.go('auth.login');
+/*    $com.get(function(data){
         $scope.session_user = $localStorage.user = data; //保存用户信息
+        console.log(data);
         $state.go('app.dashboard');
     },function(){
         $state.go('auth.login');
-    })  
+    })*/
 });
 app.controller('LoginController',function($scope,$state,$http,$resource,Base64,$localStorage){
-    $scope.login = function(){
-        var user  = $scope.user;
-        $http.post("/login",user).then(function (data) {
-            $state.go('app.dashboard');
-        },function () {
-            $scope.authError = "服务器登录错误";
+    $scope.login = function() {
+        var user = $scope.user;
+        console.log(user);
+        $.post("/login",user,function (data) {
+            console.log(data);
+            if(data.code == '201'){
+                $state.go('app.dashboard');
+            }else{
+                alert(data.message);
+            }
         })
-/*        $scope.authError = ""
-        var authdata = Base64.encode($scope.user.username + ':' + $scope.user.password);
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
-        var $com = $resource($scope.app.host + "/login");
-        $com.get(function(data){//引入data
-            $scope.session_user = $localStorage.user = data; //保存用户信息
-            $localStorage.auth = authdata;
+/*        $http.post("/login", user).then(function (data) {
+            console.log(data);
             $state.go('app.dashboard');
-        },function(){
-            $scope.authError = "服务器登录错误"
+        }, function () {
+            $scope.authError = "服务器登录错误";
         })*/
     }
+/*        $scope.login = function(){
+            $scope.authError = ""
+            var authdata = Base64.encode($scope.user.username + ':' + $scope.user.password);
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+            var $com = $resource($scope.app.host + "/auth/info/?");
+            $com.get(function(data){//引入data
+                $scope.session_user = $localStorage.user = data; //保存用户信息
+                $localStorage.auth = authdata;
+                $state.go('app.dashboard');
+            },function(){
+                $scope.authError = "服务器登录错误"
+            })
+        }*/
 });
 app.factory('Base64',function(){
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/piggame-model/piggame-model.iml" filepath="$PROJECT_DIR$/piggame-model/piggame-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/piggame-service/piggame-service.iml" filepath="$PROJECT_DIR$/piggame-service/piggame-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/piggame-web-admin/piggame-web-admin.iml" filepath="$PROJECT_DIR$/piggame-web-admin/piggame-web-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piggame-websocket/piggame-websocket.iml" filepath="$PROJECT_DIR$/piggame-websocket/piggame-websocket.iml" />
     </modules>
   </component>
 </project>

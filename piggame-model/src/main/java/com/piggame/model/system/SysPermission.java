@@ -1,6 +1,8 @@
 package com.piggame.model.system;
 
-public class SysPermission {
+import com.piggame.base.entity.BaseEntity;
+
+public class SysPermission extends BaseEntity<SysPermission>{
     private Long id;
 
     private String name;

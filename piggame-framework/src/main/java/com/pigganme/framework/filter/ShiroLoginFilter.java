@@ -28,8 +28,7 @@ public class ShiroLoginFilter extends FormAuthenticationFilter{
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
-        if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest
-                .getHeader("X-Requested-With"))) {// 不是ajax请求
+        if (!WebUtils.isAjax(httpServletRequest)) {// 不是ajax请求
             issueSuccessRedirect(request, response);
         } else {
             WebUtils.sendJson( httpServletResponse,JsonUtils.toJsonString(new Result(201,"登录成功")));

@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/piggame-model" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/piggame-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/piggame-web-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/piggame-websocket" charset="UTF-8" />
   </component>
 </project>
