@@ -1,18 +1,13 @@
 package com.piggame.message;
 
 /**
- * 消息推送实体
  * @Author:zhujie
- * @Date: Create in 15:00 2017/11/30
+ * @Date: Create in 16:16 2017/12/4
  **/
-public class OutMessage {
-
+public class Greeting {
     private String content;
 
-    public OutMessage() {
-    }
-
-    public OutMessage(String content) {
+    public Greeting(String content) {
         this.content = content;
     }
 
