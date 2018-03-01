@@ -2,7 +2,7 @@ package com.piggame.message;
 
 /**
  * @Author:zhujie
- * @Date: Create in 18:18 2017/12/4
+ * @Date: Create in 10:32 2018/3/1
  **/
 public class ClientMessage {
 

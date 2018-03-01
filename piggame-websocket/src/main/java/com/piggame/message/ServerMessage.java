@@ -2,21 +2,20 @@ package com.piggame.message;
 
 /**
  * @Author:zhujie
- * @Date: Create in 18:19 2017/12/4
+ * @Date: Create in 10:33 2018/3/1
  **/
 public class ServerMessage {
+    private String responseMessage;
 
-    private String responeseMessage;
-
-    public ServerMessage(String responeseMessage) {
-        this.responeseMessage = responeseMessage;
+    public ServerMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
     }
 
-    public String getResponeseMessage() {
-        return responeseMessage;
+    public String getResponseMessage() {
+        return responseMessage;
     }
 
-    public void setResponeseMessage(String responeseMessage) {
-        this.responeseMessage = responeseMessage;
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
     }
 }
