@@ -12,6 +12,7 @@
         <module name="piggame-service" />
         <module name="piggame-web-admin" />
         <module name="piggame-websocket" />
+        <module name="websocket-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -22,6 +23,7 @@
       <module name="piggame-service" target="1.8" />
       <module name="piggame-web-admin" target="1.8" />
       <module name="piggame-websocket" target="1.6" />
+      <module name="websocket-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>涂鸦</title>
+    <style>
+        #canvas1 {border: 1px solid black}
+    </style>
+</head>
+<body>
+
+    <div id="loginForm">
+        <form>
+            username:<input id="username"/><br>
+            password:<input id="password"><br>
+            <div id="login" >登录</div>
+        </form>
+    </div>
+    <div id="messageDiv">
+        <input id="message" /><input id="userId" type="text"/>
+        <span id="sendMessage">发送</span>
+    </div>
+    <div >
+        <ul id="messageInfo">
+        </ul>
+    </div>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <div>
+        颜色:<input id="bColor" type="color"/><br>
+        大小:<select id="bWidth"></select><br>
+        清除:<span id="btnClear">清除</span><br>
+        擦除:<span id="btnRub"> 擦除</span>
+    </div>
+</body>
+<script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/painter.js"></script>
+<script>
+    $(function () {
+        $('#canvas1').hide();
+        $('#login').click(function () {
+            var username = $('#username').val();
+            var password = $('#password').val();
+            $.getJSON("/user/login",{username:username,password:password},function (data) {
+                console.log(data);
+               if(data){
+                   $('#loginForm').hide();
+                   $('#canvas1').show();
+                   socket = new SockJS("http://127.0.0.1:8080/webSocketServer");
+                   stompClient = Stomp.over(socket);
+                   //向服务器发送websocket连接并发送CONNECT帧
+                   stompClient.connect({},function (frame) {
+                       stompClient.subscribe('/topic/mousedown',function (response) {
+                           var data = JSON.parse(response.body);
+                           context.beginPath();
+                           context.moveTo(data.x,data.y);
+                       })
+                       stompClient.subscribe('/topic/mousemove',function (response) {
+                           console.log(data);
+                           var data = JSON.parse(response.body);
+                           context.lineWidth = data.width;
+                           context.strokeStyle  = data.color;
+                           context.lineTo(data.x,data.y);
+                           context.stroke();
+
+                       })
+                       stompClient.subscribe('/user/topic/message',function (response) {
+                           console.log(response);
+                           var data = JSON.parse(response.body);
+                           var li = $('<li>'+data+'</li>');
+                           $('#messageInfo').append(li);
+                       })
+                   });
+               }
+            })
+        })
+        $('#sendMessage').click(function () {
+            var message = $('#message').val();
+            var userId = $('#userId').val();
+            var sendMessage = JSON.stringify({'userId':userId,'name':message});
+            stompClient.send('/app/message',{},sendMessage);
+        })
+    })
+    //建立连接对象(还未发起连接)
+    var socket = null;
+
+    //获取STOMP子协议的客户端对象
+    var stompClient = null;
+
+
+    var canvas = document.getElementById("canvas1");
+    var context = canvas.getContext("2d");
+
+    canvas.onmousedown = function (e) {
+        var ev = e || window.event;
+
+        var x = ev.clientX - canvas.offsetLeft;
+        var y = ev.clientY - canvas.offsetTop;
+        context.beginPath();
+        context.moveTo(x,y);
+        var data = JSON.stringify({'x':x,'y':y});
+        stompClient.send('/app/mousedown',{},data);
+
+        canvas.onmousemove = function (e) {
+            var ev = e || window.event;
+            var x = ev.clientX -canvas.offsetLeft;
+            var y = ev.clientY - canvas.offsetTop;
+            console.log(x);
+            context.lineWidth = $('#width').val();
+            context.strokeStyle  = $('#color').val();
+
+            context.lineTo(x,y);
+            context.stroke();
+            var data = JSON.stringify({'x':x,'y':y,'color':context.strokeStyle,'width':context.lineWidth});
+            stompClient.send("/app/mousemove",{},data);
+        }
+        canvas.onmouseup = function (e) {
+            canvas.onmousemove = null;
+        }
+    }
+
+
+
+    //发送消息
+    function send() {
+        var message = document.getElementById('text').value;
+        var messageJson = JSON.stringify({ "name": message });
+        stompClient.send("/app/sendTest", {}, messageJson);
+        setMessageInnerHTML("/app/sendTest 你发送的消息:" + message);
+    }
+
+    //订阅消息
+    function subscribe1() {
+        stompClient.subscribe('/topic/subscribeTest', function (response) {
+            setMessageInnerHTML("已成功订阅/topic/subscribeTest");
+            var returnData = JSON.parse(response.body);
+            setMessageInnerHTML("/topic/subscribeTest 你接收到的消息为:" + returnData.responseMessage);
+        });
+    }
+
+    //订阅消息
+    function subscribe2() {
+        stompClient.subscribe('/topic/sendTest', function (response) {
+            setMessageInnerHTML("已成功订阅/topic/sendTest");
+            var returnData = JSON.parse(response.body);
+            setMessageInnerHTML("/topic/sendTest 你接收到的消息为:" + returnData.responseMessage);
+        });
+    }
+
+    //将消息显示在网页上
+    function setMessageInnerHTML(innerHTML) {
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';
+    }
+</script>
+</html>

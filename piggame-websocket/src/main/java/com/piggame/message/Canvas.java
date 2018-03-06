@@ -10,6 +10,10 @@ public class Canvas {
 
     private int y;
 
+    private String color;
+
+    private int width;
+
     public int getX() {
         return x;
     }
@@ -24,5 +28,21 @@ public class Canvas {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 }

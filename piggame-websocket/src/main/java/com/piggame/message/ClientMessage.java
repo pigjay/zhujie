@@ -6,6 +6,8 @@ package com.piggame.message;
  **/
 public class ClientMessage {
 
+    private String userId;
+
     private String name;
 
     public String getName() {
@@ -14,5 +16,13 @@ public class ClientMessage {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
