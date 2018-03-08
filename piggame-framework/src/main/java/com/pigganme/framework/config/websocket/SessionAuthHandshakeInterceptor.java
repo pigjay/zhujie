@@ -1,4 +1,4 @@
-package com.piggame.config;
+package com.pigganme.framework.config.websocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,6 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -28,6 +27,7 @@ public class SessionAuthHandshakeInterceptor implements HandshakeInterceptor {
             return true;
         }
         map.put("user",session.getAttribute("user"));
+        map.put("sessionId",session.getId());
         return true;
     }
 

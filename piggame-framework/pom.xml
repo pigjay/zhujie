@@ -22,11 +22,6 @@
 		  <artifactId>spring-boot-starter-aop</artifactId>
 	  </dependency>
 	  <dependency>
-		  <groupId>com.piggame.boot</groupId>
-		  <artifactId>pigforgame-service</artifactId>
-		  <version>1.0</version>
-	  </dependency>
-	  <dependency>
 		  <groupId>zj.cn</groupId>
 		  <artifactId>piggame-service</artifactId>
 		  <version>1.0</version>

@@ -39,8 +39,13 @@ public class WebSocketAction {
     public @ResponseBody Object buildRoom(HttpServletRequest request){
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        return RoomManager.BuildRoom(user);
+        return RoomManager.buildRoom(user);
     }
+
+/*    @MessageMapping("/inviteFriend")
+    public ClientMessage inviteFriend(ClientMessage message){
+
+    }*/
 
     @MessageMapping("/mousedown")
     @SendTo("/topic/mousedown")

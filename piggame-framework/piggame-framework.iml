@@ -28,7 +28,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.10" level="project" />
-    <orderEntry type="library" name="Maven: com.piggame.boot:pigforgame-service:1.0" level="project" />
     <orderEntry type="module" module-name="piggame-service" />
     <orderEntry type="module" module-name="piggame-model" />
     <orderEntry type="module" module-name="piggame-common" />

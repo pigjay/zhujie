@@ -22,7 +22,7 @@
       <module name="piggame-model" target="1.8" />
       <module name="piggame-service" target="1.8" />
       <module name="piggame-web-admin" target="1.8" />
-      <module name="piggame-websocket" target="1.6" />
+      <module name="piggame-websocket" target="1.8" />
       <module name="websocket-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

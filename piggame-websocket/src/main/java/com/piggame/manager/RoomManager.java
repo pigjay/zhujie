@@ -19,12 +19,16 @@ public class RoomManager {
      * @param user 创建者
      * @return
      */
-    public static String BuildRoom(User user){
+    public static String buildRoom(User user){
         Room room = new Room();
         room.joinRoom(user);
         room.setId(user.getId());
         roomMap.put(room.getId().toString(),room);
         return room.getId().toString();
+    }
+
+    public static void joinRoom(String roomId,User user){
+
     }
 
     public static void removeRoom(String roomId){

@@ -12,6 +12,9 @@ import java.util.List;
 public class UserListUtil {
 
     private static final List<User> users = new ArrayList<User>();
+
+    private static final List<User> client = new ArrayList<User>();
+
     static {
         users.add( new User(0L,"zhujie","123456"));
         users.add(new User(1L,"liguoyang","123456"));
@@ -42,5 +45,13 @@ public class UserListUtil {
         }
 
         return false;
+    }
+
+    public static void connectClient(User user){
+        client.add(user);
+    }
+
+    public static int getConnectCount(){
+        return client.size();
     }
 }
